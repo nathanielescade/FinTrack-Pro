@@ -1,0 +1,246 @@
+/* Base Styles */
+body {
+  font-family: 'Roboto Mono', monospace;
+  background-color: #000000;
+  color: #e0e0e0;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+/* Glitch effect for the main title */
+.glitch {
+  position: relative;
+  color: #00ffea;
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  animation: flicker 3s infinite alternate;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: 0.8;
+  clip: rect(0, 900px, 0, 0);
+}
+
+.glitch::before {
+  animation: glitchTop 2s infinite linear alternate-reverse;
+  color: #ff00c8;
+  z-index: -1;
+}
+
+.glitch::after {
+  animation: glitchBottom 2s infinite linear alternate-reverse;
+  color: #00ffea;
+  z-index: -2;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 22%, 24%, 55% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes glitchTop {
+  0% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0);
+  }
+  10% {
+    clip: rect(0, 9999px, 50px, 0);
+    transform: translate(-3px, -3px);
+  }
+  20% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0);
+  }
+  30% {
+    clip: rect(0, 9999px, 40px, 0);
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0);
+  }
+  100% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0);
+  }
+}
+
+@keyframes glitchBottom {
+  0% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0);
+  }
+  10% {
+    clip: rect(30px, 9999px, 80px, 0);
+    transform: translate(3px, 3px);
+  }
+  20% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0);
+  }
+  30% {
+    clip: rect(20px, 9999px, 60px, 0);
+    transform: translate(2px, -2px);
+  }
+  40% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0);
+  }
+  100% {
+    clip: rect(0, 9999px, 0, 0);
+    transform: translate(0);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ffea, #ff00c8);
+  border-radius: 6px;
+}
+
+/* Floating neon particles animation */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  mix-blend-mode: screen;
+}
+
+.particle.cyan {
+  background: #00ffe0;
+  box-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffe0;
+}
+
+.particle.pink {
+  background: #ff00c8;
+  box-shadow: 0 0 10px #ff00c8, 0 0 20px #ff00c8;
+}
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+}
+
+/* Neon flicker for buttons */
+.neon-btn {
+  box-shadow:
+    0 0 5px #ff00c8,
+    0 0 10px #ff00c8,
+    0 0 20px #ff00c8,
+    0 0 40px #ff00c8;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.neon-btn:hover {
+  box-shadow:
+    0 0 10px #00ffe0,
+    0 0 20px #00ffe0,
+    0 0 40px #00ffe0,
+    0 0 80px #00ffe0;
+}
+
+/* Input neon glow */
+.neon-input {
+  background: #111;
+  border: 2px solid #ff00c8;
+  color: #e0e0e0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  outline: none;
+  box-shadow:
+    0 0 5px #ff00c8,
+    0 0 10px #ff00c8;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.neon-input:focus {
+  border-color: #00ffe0;
+  box-shadow:
+    0 0 10px #00ffe0,
+    0 0 20px #00ffe0;
+  color: #00ffe0;
+}
+
+/* Loader animation */
+.loader {
+  border: 4px solid #111;
+  border-top: 4px solid #ff00c8;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scrollbar for forecast list */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thumb-pink-600::-webkit-scrollbar-thumb {
+  background-color: #be185d;
+  border-radius: 6px;
+}
+
+/* Forecast container with vertical scroll */
+.forecast-container {
+  max-height: 350px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #be185d #111;
+}
+
+.forecast-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.forecast-container::-webkit-scrollbar-track {
+  background: #111;
+}
+
+.forecast-container::-webkit-scrollbar-thumb {
+  background-color: #be185d;
+  border-radius: 4px;
+}
